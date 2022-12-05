@@ -6,29 +6,16 @@ const {
   updateProduct,
   deleteProduct,
 } = require('./controllers/productController');
+const routes = require('./routes/routes'); 
 
 const server = http.createServer((req, res) => {
-  if (req.url === '/api/products' && req.method === 'GET') {
-    getProducts(req, res);
-  } else if (req.url.match(/\/api\/products\/\w+/) && req.method === 'GET') {
-    const id = req.url.split('/')[3];
-    getProduct(req, res, id);
-  } else if (req.url === '/api/products' && req.method === 'POST') {
-    createProduct(req, res);
-  } else if (req.url.match(/\/api\/products\/\w+/) && req.method === 'PUT') {
-    const id = req.url.split('/')[3];
-    updateProduct(req, res, id);
-  } else if (req.url.match(/\/api\/products\/\w+/) && req.method === 'DELETE') {
-    const id = req.url.split('/')[3];
-    deleteProduct(req, res, id);
-  } else {
-    res.writeHead(404, { 'Content-Type': 'application/json' });
-    res.end(
-      JSON.stringify({
-        message: 'Route Not Found: Please use the api/products endpoint',
-      })
-    );
-  }
+  
+   routes.dispatch(req, res) && getProduct
+   routes.dispatch(req, res) && getProducts
+   routes.dispatch(req, res) && createProduct
+   routes.dispatch(req, res) && updateProduct
+   routes.dispatch(req, res) && deleteProduct
+
 });
 
 const PORT = process.env.PORT || 5000;
