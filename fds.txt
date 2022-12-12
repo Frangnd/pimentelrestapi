@@ -1,0 +1,1 @@
+protocol=&slashes=&auth=&host=&port=&hostname=&hash=&search=%3Fprecio%3D200%26color%3Dnegro&query=precio%3D200%26color%3Dnegro&pathname=%2Fitems&path=%2Fitems%3Fprecio%3D200%26color%3Dnegro&href=%2Fitems%3Fprecio%3D200%26color%3Dnegro
